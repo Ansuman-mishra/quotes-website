@@ -8,18 +8,13 @@
             integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
             crossorigin="anonymous" />
       <link rel="stylesheet" href="./style.css">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <title>Document</title>
 </head>
 
 <body>
-      <!-- <div id="quotes"></div>
-      <div id="author"></div>
-      <button onclick="quotes()">add quotes</button>
-      <button onclick="tweetfun()">tweet</button> -->
-
-
       <div class="container">
-            <div class="inner">
+            <div class="inner" data-aos="zoom-in">
                   <div class="box">
                         <p class="number">
                               <img onclick="tweetfun()"
@@ -37,16 +32,9 @@
                   </div>
             </div>
       </div>
-
-
-
-
-
-
-
-
-
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>
+            AOS.init();
             const Disquotes = document.getElementById("quotes");
             const author = document.getElementById("author");
             let realdata = "";
