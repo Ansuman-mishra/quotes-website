@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+            integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+            crossorigin="anonymous" />
+      <link rel="stylesheet" href="./style.css">
+      <title>Document</title>
+</head>
+
+<body>
+      <!-- <div id="quotes"></div>
+      <div id="author"></div>
+      <button onclick="quotes()">add quotes</button>
+      <button onclick="tweetfun()">tweet</button> -->
+
+
+      <div class="container">
+            <div class="inner">
+                  <div class="box">
+                        <p class="number">
+                              <img onclick="tweetfun()"
+                                    src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"
+                                    alt="twiter img" title="Tweetme" id="tweet">
+                        </p>
+                        <div class="text">
+                              <i class="start-quote fas fa-quote-left"></i>
+                              <p id="quotes" class="quotes"></p>
+                              <p id="author" class="author"></p>
+                        </div>
+                        <label class="button">
+                              <p onclick="quotes()">New quotes</p>
+                        </label>
+                  </div>
+            </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <script>
+            const Disquotes = document.getElementById("quotes");
+            const author = document.getElementById("author");
+            let realdata = "";
+            let quotesData = "";
+            const tweetfun = () => {
+                  let tweetpost = `https://twitter.com/intent/tweet?text=${quotesData.text} 
+                                                                        -${quotesData.author}`;
+                  window.open(tweetpost);
+            }
+
+
+            const getnewqoutes = () => {
+                  // const quotelen = realdata.length();
+                  const random = Math.floor(Math.random() * 1700);
+                  // console.log(realdata[random].text);
+                  quotesData = realdata[random];
+                  Disquotes.innerHTML = `${quotesData.text}`
+                  author.innerHTML = `${quotesData.author}`
+                  quotesData.author == null ? (author.innerText = "UNKNOWN")
+                        : (author.innerText = `-${quotesData.author}`);
+            };
+            const quotes = async () => {
+                  const api = "https://type.fit/api/quotes";
+                  try {
+                        const data = await fetch(api);
+                        realdata = await data.json();
+                        getnewqoutes();
+
+                  } catch (error) {
+                        document.write("Something went wrong")
+                  }
+            }
+            quotes();
+      </script>
+</body>
+
+</html>
